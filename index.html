@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Digital Twin for Aero Piston Engines — SIH26054 — Team ACE</title>
+<meta name="description" content="AI-Enabled Real-Time Digital Twin System for Health Monitoring, Fault Prediction and Mission Reliability Enhancement of Aero Piston Engines used in MALE UAVs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+<style>
+  :root{
+    --cream:#F4F1EA;
+    --panel:#FFFFFF;
+    --ink:#22201B;
+    --muted:#6B6659;
+    --line:#E2DDD0;
+    --accent:#2F6B4F;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:inherit}
+  html,body{margin:0; padding:0; background:var(--cream); color:var(--ink); font-family:'Inter', system-ui, sans-serif;}
+  body{line-height:1.5;}
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+
+  header{padding:28px 0 0;}
+  .eyebrow{
+    font-size:13px; color:var(--muted); display:flex; gap:10px; align-items:center;
+  }
+  .eyebrow b{color:var(--ink); font-weight:600;}
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(28px, 4vw, 42px);
+    line-height:1.15; font-weight:600; margin:18px 0 12px; max-width:720px;
+  }
+  .tagline{font-size:16px; color:var(--muted); max-width:600px; margin:0 0 40px;}
+
+  /* --- main grid: button + video --- */
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:20px;
+    align-items:stretch;
+    margin-bottom:44px;
+  }
+  @media (max-width:760px){ .grid{grid-template-columns:1fr;} }
+
+  .big-button{
+    background:var(--accent);
+    color:#F4F1EA;
+    border-radius:14px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    padding:32px;
+    text-decoration:none;
+    min-height:280px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .big-button:hover{background:#255940; transform:translateY(-2px);}
+  .big-button .bb-label{font-size:13px; opacity:0.75; margin-bottom:10px; font-family:'Space Grotesk', sans-serif;}
+  .big-button .bb-title{font-family:'Space Grotesk', sans-serif; font-size:28px; font-weight:600; line-height:1.2; margin-bottom:16px;}
+  .big-button .bb-arrow{font-size:22px;}
+
+  .video-box{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:10px;
+    min-height:280px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .video-frame{position:relative; width:100%; padding-top:56.25%; border-radius:8px; overflow:hidden; background:#EAE6D9;}
+  .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+
+  /* --- links row --- */
+  .links-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  @media (max-width:600px){ .links-row{grid-template-columns:1fr;} }
+  .link-item{
+    background:var(--panel);
+    padding:20px 22px;
+    text-decoration:none;
+  }
+  .link-item .li-label{font-size:12px; color:var(--muted); margin-bottom:6px;}
+  .link-item .li-title{font-family:'Space Grotesk', sans-serif; font-size:15px; font-weight:600;}
+  .link-item:hover .li-title{color:var(--accent);}
+
+  footer{padding:40px 0 48px; font-size:13px; color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow"><b>Team ACE</b> · SIH26054 · Robotics &amp; Drones</div>
+    <h1>An AI Digital Twin that tells you an engine is failing — before it does.</h1>
+    <p class="tagline">Real-time health monitoring, fault prediction, and mission reliability enhancement for aero piston engines used in MALE UAVs.</p>
+  </header>
+
+  <div class="grid">
+    <!-- EDIT: replace href="#" with your deployed Vercel app URL -->
+    <a class="big-button" href="#" id="prototype-link" target="_blank" rel="noopener">
+      <div class="bb-label">LIVE PROTOTYPE</div>
+      <div class="bb-title">Open the dashboard</div>
+      <div class="bb-arrow">↗</div>
+    </a>
+
+    <div class="video-box">
+      <div class="video-frame">
+        <!-- EDIT: replace YOUTUBE_VIDEO_ID with your actual video ID (the part after v= in the YouTube URL) -->
+        <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" title="Project demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="links-row">
+    <!-- EDIT: replace href="#" with your GitHub repo URL -->
+    <a class="link-item" href="#" id="github-link" target="_blank" rel="noopener">
+      <div class="li-label">Code</div>
+      <div class="li-title">View on GitHub ↗</div>
+    </a>
+    <!-- EDIT: replace href="#" with your YouTube video URL -->
+    <a class="link-item" href="#" id="youtube-link" target="_blank" rel="noopener">
+      <div class="li-label">Video</div>
+      <div class="li-title">Watch on YouTube ↗</div>
+    </a>
+    <a class="link-item" href="#problem-statement">
+      <div class="li-label">Problem Statement</div>
+      <div class="li-title">SIH26054 · DRDO</div>
+    </a>
+  </div>
+
+  <footer>
+    Built with open-source tools only · Team ACE
+  </footer>
+</div>
+
+</body>
+</html>
