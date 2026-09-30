@@ -2,156 +2,231 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- ============================================================
+     EDIT THESE TWO LINES — this updates every link on the page
+     ============================================================ -->
+<script>
+  const PROTOTYPE_URL   = "#"; // <-- put your deployed Vercel app URL here
+  const YOUTUBE_VIDEO_ID = "YOUTUBE_VIDEO_ID"; // <-- just the ID, the part after v= in the YouTube URL
+
+  // Optional — usually don't need to touch these
+  const GITHUB_URL = "https://github.com/DhrG23/SIH_RUL_Model";
+</script>
+<!-- ============================================================ -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Digital Twin for Aero Piston Engines — SIH26054 — Team ACE</title>
 <meta name="description" content="AI-Enabled Real-Time Digital Twin System for Health Monitoring, Fault Prediction and Mission Reliability Enhancement of Aero Piston Engines used in MALE UAVs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
 <style>
   :root{
-    --cream:#F4F1EA;
-    --panel:#FFFFFF;
-    --ink:#22201B;
-    --muted:#6B6659;
-    --line:#E2DDD0;
-    --accent:#2F6B4F;
+    --cream:#F3EFE4;
+    --panel:#FBF9F3;
+    --ink:#111111;
+    --muted:#5B5748;
+    --orange:#FF5A1F;
+    --orange-dark:#E24E17;
+    --line:#111111;
+    --shadow-c: 6px 6px 0px var(--ink);
+    --shadow-sm: 4px 4px 0px var(--ink);
     box-sizing:border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   *{box-sizing:inherit}
-  html,body{margin:0; padding:0; background:var(--cream); color:var(--ink); font-family:'Inter', system-ui, sans-serif;}
-  body{line-height:1.5;}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px);}
+  html,body{margin:0; padding:0;}
+  body{
+    background-color:var(--cream);
+    background-image:
+      linear-gradient(rgba(17,17,17,0.07) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(17,17,17,0.07) 1.5px, transparent 1.5px);
+    background-size: 34px 34px;
+    color:var(--ink);
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    line-height:1.5;
+  }
   img{max-width:100%; display:block;}
   a{color:inherit;}
 
-  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 20px;}
 
-  header{padding:28px 0 0;}
-  .eyebrow{
-    font-size:13px; color:var(--muted); display:flex; gap:10px; align-items:center;
+  /* ---------- HEADER ---------- */
+  .topbar{
+    display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+    padding:26px 0 0; flex-wrap:wrap;
   }
-  .eyebrow b{color:var(--ink); font-weight:600;}
+  .eyebrow{
+    font-size:12.5px; color:var(--muted); display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+  }
+  .eyebrow b{color:var(--ink); font-weight:700;}
+  .eyebrow .dot{opacity:0.5;}
+
+  .views-box{
+    border:3px solid var(--ink); background:var(--panel); box-shadow:var(--shadow-sm);
+    padding:8px 14px; font-size:12px; display:flex; align-items:center; gap:8px; white-space:nowrap;
+  }
+  .views-box .v-dot{width:8px; height:8px; background:var(--orange); border:1.5px solid var(--ink); flex:0 0 auto;}
+  .views-box .v-label{color:var(--muted); letter-spacing:0.03em;}
+  .views-box .v-count{font-weight:800; font-size:14px;}
 
   h1{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:clamp(28px, 4vw, 42px);
-    line-height:1.15; font-weight:600; margin:18px 0 12px; max-width:720px;
+    font-size:clamp(26px, 4vw, 40px);
+    line-height:1.18; font-weight:800; margin:20px 0 12px; max-width:760px; letter-spacing:-0.01em;
   }
-  .tagline{font-size:16px; color:var(--muted); max-width:600px; margin:0 0 40px;}
+  .tagline{font-size:14.5px; color:var(--muted); max-width:600px; margin:0 0 34px;}
 
-  /* --- main grid: button + video --- */
+  /* ---------- MAIN GRID: button + video ---------- */
   .grid{
     display:grid;
-    grid-template-columns:1fr 1.4fr;
+    grid-template-columns:1fr 1.35fr;
     gap:20px;
     align-items:stretch;
-    margin-bottom:44px;
+    margin-bottom:22px;
   }
   @media (max-width:760px){ .grid{grid-template-columns:1fr;} }
 
+  .box{
+    border:3px solid var(--ink);
+    background:var(--panel);
+    box-shadow:var(--shadow-c);
+  }
+
   .big-button{
-    background:var(--accent);
-    color:#F4F1EA;
-    border-radius:14px;
+    background:var(--orange);
+    color:var(--ink);
+    border:3px solid var(--ink);
+    box-shadow:var(--shadow-c);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:flex-start;
-    padding:32px;
-    text-decoration:none;
+    padding:30px;
+    text-decoration:none !important;
     min-height:280px;
-    transition:transform .15s ease, background .15s ease;
+    transition:transform .1s ease, box-shadow .1s ease;
   }
-  .big-button:hover{background:#255940; transform:translateY(-2px);}
-  .big-button .bb-label{font-size:13px; opacity:0.75; margin-bottom:10px; font-family:'Space Grotesk', sans-serif;}
-  .big-button .bb-title{font-family:'Space Grotesk', sans-serif; font-size:28px; font-weight:600; line-height:1.2; margin-bottom:16px;}
-  .big-button .bb-arrow{font-size:22px;}
+  .big-button:hover{transform:translate(-3px,-3px); box-shadow:9px 9px 0px var(--ink); text-decoration:none;}
+  .big-button:active{transform:translate(3px,3px); box-shadow:2px 2px 0px var(--ink);}
+  .big-button .bb-label{
+    font-size:12px; font-weight:700; letter-spacing:0.06em; margin-bottom:12px;
+    background:var(--ink); color:var(--cream); padding:3px 8px; display:inline-block;
+  }
+  .big-button .bb-title{font-size:26px; font-weight:800; line-height:1.2; margin-bottom:18px;}
+  .big-button .bb-arrow{font-size:26px; font-weight:800;}
 
   .video-box{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:14px;
     padding:10px;
     min-height:280px;
     display:flex;
     align-items:center;
     justify-content:center;
   }
-  .video-frame{position:relative; width:100%; padding-top:56.25%; border-radius:8px; overflow:hidden; background:#EAE6D9;}
+  .video-frame{position:relative; width:100%; padding-top:56.25%; overflow:hidden; background:#111;}
   .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
 
-  /* --- links row --- */
+  /* ---------- LINKS ROW ---------- */
   .links-row{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    border-radius:12px;
-    overflow:hidden;
+    gap:20px;
+    margin-bottom:44px;
   }
   @media (max-width:600px){ .links-row{grid-template-columns:1fr;} }
   .link-item{
     background:var(--panel);
-    padding:20px 22px;
-    text-decoration:none;
+    border:3px solid var(--ink);
+    box-shadow:var(--shadow-sm);
+    padding:16px 18px;
+    text-decoration:none !important;
+    transition:transform .1s ease, box-shadow .1s ease;
   }
-  .link-item .li-label{font-size:12px; color:var(--muted); margin-bottom:6px;}
-  .link-item .li-title{font-family:'Space Grotesk', sans-serif; font-size:15px; font-weight:600;}
-  .link-item:hover .li-title{color:var(--accent);}
+  .link-item:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0px var(--ink);}
+  .link-item:active{transform:translate(2px,2px); box-shadow:1px 1px 0px var(--ink);}
+  .link-item .li-label{font-size:11px; color:var(--muted); margin-bottom:6px; letter-spacing:0.04em;}
+  .link-item .li-title{font-size:14px; font-weight:700;}
 
-  footer{padding:40px 0 48px; font-size:13px; color:var(--muted);}
+  footer{padding:8px 0 48px; font-size:12px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <header>
-    <div class="eyebrow"><b>Team ACE</b> · SIH26054 · Robotics &amp; Drones</div>
-    <h1>An AI Digital Twin that tells you an engine is failing — before it does.</h1>
-    <p class="tagline">Real-time health monitoring, fault prediction, and mission reliability enhancement for aero piston engines used in MALE UAVs.</p>
-  </header>
+  <div class="topbar">
+    <div class="eyebrow"><b>TEAM ACE</b><span class="dot">·</span>SIH26054<span class="dot">·</span>ROBOTICS &amp; DRONES</div>
+    <div class="views-box">
+      <span class="v-dot"></span>
+      <span class="v-label">VIEWS</span>
+      <span class="v-count" id="view-count">—</span>
+    </div>
+  </div>
+
+  <h1>An AI Digital Twin that tells you an engine is failing — before it does.</h1>
+  <p class="tagline">Real-time health monitoring, fault prediction, and mission reliability enhancement for aero piston engines used in MALE UAVs.</p>
 
   <div class="grid">
-    <!-- EDIT: replace href="#" with your deployed Vercel app URL -->
-    <a class="big-button" href="#" id="prototype-link" target="_blank" rel="noopener">
-      <div class="bb-label">LIVE PROTOTYPE</div>
-      <div class="bb-title">Open the dashboard</div>
-      <div class="bb-arrow">↗</div>
+    <a class="big-button" id="prototype-link" href="#" target="_blank" rel="noopener">
+      <span class="bb-label">LIVE PROTOTYPE</span>
+      <span class="bb-title">Go to Project Website</span>
+      <span class="bb-arrow">→</span>
     </a>
 
-    <div class="video-box">
+    <div class="box video-box">
       <div class="video-frame">
-        <!-- EDIT: replace YOUTUBE_VIDEO_ID with your actual video ID (the part after v= in the YouTube URL) -->
-        <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" title="Project demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="yt-frame" src="" title="Project demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 
   <div class="links-row">
-    <!-- EDIT: replace href="#" with your GitHub repo URL -->
-    <a class="link-item" href="#" id="github-link" target="_blank" rel="noopener">
-      <div class="li-label">Code</div>
-      <div class="li-title">View on GitHub ↗</div>
+    <a class="link-item" id="github-link" href="#" target="_blank" rel="noopener">
+      <div class="li-label">CODE</div>
+      <div class="li-title">View on GitHub →</div>
     </a>
-    <!-- EDIT: replace href="#" with your YouTube video URL -->
-    <a class="link-item" href="#" id="youtube-link" target="_blank" rel="noopener">
-      <div class="li-label">Video</div>
-      <div class="li-title">Watch on YouTube ↗</div>
+    <a class="link-item" id="youtube-link" href="#" target="_blank" rel="noopener">
+      <div class="li-label">VIDEO</div>
+      <div class="li-title">Watch on YouTube →</div>
     </a>
     <a class="link-item" href="#problem-statement">
-      <div class="li-label">Problem Statement</div>
+      <div class="li-label">PROBLEM STATEMENT</div>
       <div class="li-title">SIH26054 · DRDO</div>
     </a>
   </div>
 
   <footer>
-    Built with open-source tools only · Team ACE
+    <span>Built with open-source tools only · Team ACE</span>
+    <span>SIH 2026</span>
   </footer>
 </div>
+
+<script>
+  // Wire up links from the config at the top of the file
+  document.getElementById('prototype-link').href = PROTOTYPE_URL;
+  document.getElementById('github-link').href = GITHUB_URL;
+  document.getElementById('youtube-link').href = "https://www.youtube.com/watch?v=" + YOUTUBE_VIDEO_ID;
+  document.getElementById('yt-frame').src =
+    "https://www.youtube.com/embed/" + YOUTUBE_VIDEO_ID +
+    "?autoplay=1&mute=1&loop=1&playlist=" + YOUTUBE_VIDEO_ID + "&rel=0";
+
+  // Simple view counter (counterapi.dev — free, no signup, no backend needed).
+  // Swap the workspace/counter name below if you want your own private counter.
+  (function () {
+    const counterUrl = "https://api.counterapi.dev/v1/sih26054-team-ace/site-views/up";
+    fetch(counterUrl)
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById('view-count');
+        if (el && data && typeof data.count !== 'undefined') el.textContent = data.count;
+      })
+      .catch(() => {
+        // If the counter service is unreachable, fail quietly — page still works fine.
+      });
+  })();
+</script>
 
 </body>
 </html>
